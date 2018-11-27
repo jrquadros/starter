@@ -5,17 +5,17 @@ const mongoose = require('mongoose');
 const ProductSchema = new mongoose.Schema({
     title:{
         type: String,
-        required: true,
+        required: false,
     },
 
     description:{
         type: String,
-        required: true,
+        required: false,
     },
 
     url:{
         type: String,
-        required: true,
+        required: false,
     },
     createdAt:{
 
