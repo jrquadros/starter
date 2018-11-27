@@ -5,6 +5,12 @@ const requireDir = require('require-dir');
 //definindo rota
 const porta = 3001;
 
+//iniciando o app
+const app = express();
+
+//permite usar json para inserir dados
+app.use(express.json());
+
 //iniciando o DB 
 
 mongoose.connect('mongodb://localhost:27017/nodeapi', {
@@ -15,8 +21,7 @@ mongoose.connect('mongodb://localhost:27017/nodeapi', {
 //faz require automaticamente para todos os models da pasta
 requireDir('./src/models');
 
-//iniciando o app
-const app = express();
+
 
 //Rotas
 app.use('/api', require('./src/routes'));
