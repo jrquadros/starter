@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
 
+import './styles.css';
+
     
 
 export default class Main extends Component{
@@ -25,15 +27,18 @@ export default class Main extends Component{
 
 
     render(){
+        //desestruturação *
+        const { products } = this.state;
+
         return(
             <div className="product-list">
-                {this.state.products.map(product => (
+                {products.map(product => (
                     //sempre adicionar um id com "key" ao usar o map
-                    <h2 key={product._id}>
-                        {product.title}
-                        <p/>
-                        {product._id}
-                    </h2>
+                   <article key={product._id}>
+                        <strong>{product.title}</strong>
+                        <p>{product.description}</p>
+                        <a href="#">Acessar</a>
+                   </article>
                 ))}
             </div>
         );
