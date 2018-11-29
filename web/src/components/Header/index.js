@@ -1,8 +1,8 @@
 import React from 'react';
-import './styles.css';
+import {Cabecalho} from './styles';
 
 const Header =()=>(
-    <header id="main-header">ProductHunt</header>
+    <Cabecalho id="main-header">ProductHunt</Cabecalho>
 );
 
 export default Header;

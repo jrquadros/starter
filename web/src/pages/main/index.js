@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
 
-import './styles.css';
 
+import {Container} from './styles';
     
 
 export default class Main extends Component{
@@ -31,7 +31,7 @@ export default class Main extends Component{
         const { products } = this.state;
 
         return(
-            <div className="product-list">
+            <Container>
                 {products.map(product => (
                     //sempre adicionar um id com "key" ao usar o map
                    <article key={product._id}>
@@ -40,7 +40,7 @@ export default class Main extends Component{
                         <a href="#">Acessar</a>
                    </article>
                 ))}
-            </div>
+            </Container>
         );
     };
 };
