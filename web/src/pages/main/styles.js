@@ -43,3 +43,25 @@ export const Container = styled.div`
     }
 
 `;
+
+export const Actions = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    button{
+        padding: 10px;
+        border-radius: 5px;
+        border: 0;
+        background: #da552f;
+        color: #FFF;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    button:hover{
+        opacity: 0.7;
+        cursor: pointer;
+    }
+
+`;
