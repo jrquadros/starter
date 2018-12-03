@@ -9,24 +9,33 @@ export default class Main extends Component{
 
     state = {
         products: [],
-        productInfo: {},
-        page: 1
+        productTotal:{},
+        productPage: [],
+        productPages:[],
+        
     };
 
     //funções do react sempre devem ser utilizadas no modelo de named functions
     componentDidMount(){
-        this.loadProducts();
+        this.loadProducts();        
     };
+
+
     //funções próprias devem ser utilizadas no modelo de arrow functions
-    loadProducts = async (page = 1) =>{
-        const response = await api.get(`/products?page${page}`);
+    loadProducts = async (pageNumber = 1) =>{
 
-        const {docs, ...productInfo} = response.data;
+        const response = await api.get(`/products?page=${pageNumber}`);
 
-        this.setState({ products: docs, productInfo});
+        const docs = response.data.docs;
+        const total = response.data.total;
+        //const limit = response.data.limit;
+        const page = response.data.page;
+        const pages = response.data.pages;
 
-        //console.log(docs, productInfo);
-
+        this.setState({ products: docs });
+        this.setState({ productTotal: total });
+        this.setState({ productPage: Number(page)});
+        this.setState({ productPages: Number(pages)});
     };
 
     prevPage = () =>{
@@ -34,13 +43,15 @@ export default class Main extends Component{
     };
 
     nextPage = () =>{
-        var {page, productInfo} = this.state;
+        const { productPage, productPages} = this.state;
 
-        if(page === productInfo.pages) return;
+        if(productPage === productPages){
+            return;
+        }else{
+            
+            this.loadProducts(productPage + 1);
+        }
 
-        const pageNumber = page + 1;
-
-        this.loadProducts(pageNumber);
 
 
     };
@@ -48,10 +59,20 @@ export default class Main extends Component{
 
     render(){
         //desestruturação *
-        const { products } = this.state;
+        const { products,
+                productPage,
+                productPages
+            } = this.state;
+        
 
         return(
             <div>
+                <h1>
+                  Página atual: {productPage}
+                  <p/>
+                  Páginas: {productPages}
+
+                </h1>
             <Container>
                 {products.map(product => (
                     //sempre adicionar um id com "key" ao usar o map
