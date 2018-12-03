@@ -64,4 +64,9 @@ export const Actions = styled.div`
         cursor: pointer;
     }
 
+    button:disabled{
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
 `;

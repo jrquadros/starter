@@ -91,8 +91,8 @@ export default class Main extends Component{
             </Container>
 
             <Actions>
-                <button onClick={this.prevPage}>Anterior</button> 
-                <button onClick={this.nextPage}>Próxima</button>       
+                <button onClick={this.prevPage} disabled={this.state.productPage ===1}>Anterior</button> 
+                <button onClick={this.nextPage} disabled={this.state.productPage === this.state.productPages}>Próxima</button>       
             </Actions>
             </div>
         );
