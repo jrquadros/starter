@@ -39,16 +39,22 @@ export default class Main extends Component{
     };
 
     prevPage = () =>{
+        const { productPage } = this.state;
+        if(productPage === 1){
+            return;
+        }else{
+            this.loadProducts(productPage -1);
+        }
 
+ 
     };
 
     nextPage = () =>{
-        const { productPage, productPages} = this.state;
+        const { productPage, productPages } = this.state;
 
         if(productPage === productPages){
             return;
         }else{
-            
             this.loadProducts(productPage + 1);
         }
 
